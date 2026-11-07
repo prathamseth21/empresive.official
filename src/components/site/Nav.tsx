@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/empresive-logo.jpg.asset.json";
+import logo from "@/assets/empresive-logo.png.asset.json";
 
 export const NAV = [
   { id: "home", label: "Home" },
@@ -42,7 +42,7 @@ export function Nav() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-10">
         <a href="#home" aria-label="Empresive home" onClick={() => setOpen(false)}>
-          <img src={logo.url} alt="Empresive" className="h-9 w-auto mix-blend-multiply md:h-11" />
+          <img src={logo.url} alt="Empresive" className="h-8 w-auto md:h-10" />
         </a>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
           {NAV.map((n) => (
