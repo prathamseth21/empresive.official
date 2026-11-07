@@ -330,7 +330,7 @@ function HowWeWork() {
 }
 
 function Insights() {
-  const [first, ...rest] = INSIGHTS;
+  const first = INSIGHTS[0]!; const rest = INSIGHTS.slice(1);
   return (
     <section id="insights" className="py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
@@ -363,13 +363,15 @@ function Insights() {
   );
 }
 
+type Errs = { name?: string; email?: string; details?: string };
+
 function Contact() {
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Errs>({});
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const v = (k: string) => String(f.get(k) || "").trim();
-    const errs: Record<string, string> = {};
+    const errs: Errs = {};
     if (!v("name")) errs.name = "Please add your name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) errs.email = "Please add a valid work email.";
     if (!v("details")) errs.details = "Tell us a little about your project.";
